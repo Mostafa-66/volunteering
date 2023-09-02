@@ -1,0 +1,69 @@
+﻿@model Opportunity
+@{
+    ViewData["Title"] = "New";
+}
+<form method="post">
+    <div class="border p-3 mt-4">
+        <input asp-for="Opp_ID" type="hidden" />
+        <div asp-validation-summary="All"></div>
+        <div class="row pb-2">
+            <h2 class="text-primary">إضافة أنشطة جديدة</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Opp_Name">أسم النشاط</label>
+            <input asp-for="Opp_Name" class="form-control" />
+            <span asp-validation-for="Opp_Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Opp_Description">وصف النشاط</label>
+            <textarea asp-for="Opp_Description" class="form-control"></textarea>
+            <span asp-validation-for="Opp_Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Opp_Brief">موجز النشاط</label>
+            <textarea asp-for="Opp_Brief" class="form-control"></textarea>
+            <span asp-validation-for="Opp_Brief" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Opp_Start">بداية النشاط</label>
+            <input type="date" asp-for="Opp_Start" class="form-control" />
+            <span asp-validation-for="Opp_Start" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Opp_End">نهاية النشاط</label>
+            <input type="date" asp-for="Opp_End" class="form-control" />
+            <span asp-validation-for="Opp_End" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Opp_RegisterStart">بداية التسجيل</label>
+            <input type="date" asp-for="Opp_RegisterStart" class="form-control" />
+            <span asp-validation-for="Opp_RegisterStart" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Opp_RegisterEnd">نهاية التسجيل</label>
+            <input type="date" asp-for="Opp_RegisterEnd" class="form-control" />
+            <span asp-validation-for="Opp_RegisterEnd" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Opp_FormLink">رابط التسجيل</label>
+            <input asp-for="Opp_FormLink" class="form-control" />
+            <span asp-validation-for="Opp_FormLink" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Sector_ID"></label>
+            <select asp-for="Sector_ID" class="form-control" asp-items="@ViewBag.SectorList">
+            </select>
+        </div>
+        <br />
+        <hr />
+        <button type="submit" class="btn btn-danger" style="width:150px">حذف</button>
+        <a asp-action="Index" asp-controller="Admin" class="btn btn-secondary" style="width:150px">
+            الرجوع للأنشطة
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}

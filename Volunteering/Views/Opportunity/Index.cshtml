@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Opportunity>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    @foreach(var opp in Model)
+    {
+        @if(opp.Opp_Published == "true")
+        {
+            <div class="card" style="width: 18rem; margin-left: 75%">
+                <div class="card-body">
+                    <h5 class="card-title">@Localizer[@opp.Opp_Name]</h5>
+                    <p class="card-text">@Localizer[@opp.Opp_Description]</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@Localizer[@opp.Sector.Sec_Name]</li>
+
+                    <li class="list-group-item">
+                        @Localizer["من"]
+                        @opp.Opp_Start
+                    </li>
+
+                    <li class="list-group-item">
+                        @Localizer["الى"]
+                        @opp.Opp_End
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <a href="@opp.Opp_FormLink" class="card-link">@Localizer["رابط التسجيل"]</a>
+                    <a asp-action="Details" asp-controller="Opportunity" asp-route-id="@opp.Opp_ID" class="card-link">
+                        @Localizer["التفاصيل"]
+                    </a>
+                </div>
+            </div>
+            <br />
+            <hr />
+        }
+    }
+</div>

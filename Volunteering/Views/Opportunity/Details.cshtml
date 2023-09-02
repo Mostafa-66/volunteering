@@ -1,0 +1,50 @@
+﻿@model Opportunity
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="border p-3 mt-4">
+    <div asp-validation-summary="All"></div>
+    <div class="row pb-2">
+        <h2 class="text-primary">@Localizer["تفاصيل النشاط"]</h2>
+        <hr />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Opp_Name">@Localizer["اسم النشاط"]</label>
+        <h6>@Localizer[@ViewBag.opp.Opp_Name]</h6>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Opp_Description">@Localizer["وصف النشاط"]</label>
+        <h6>@Localizer[@ViewBag.opp.Opp_Description]</h6>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Opp_Brief">@Localizer["موجز النشاط"]</label>
+        <h6>@Localizer[@ViewBag.opp.Opp_Brief]</h6>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Opp_Start">@Localizer["بداية النشاط"]</label>
+        <h6>@ViewBag.opp.Opp_Start</h6>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Opp_End"> @Localizer["نهاية النشاط"]</label>
+        <h6>@ViewBag.opp.Opp_End</h6>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Opp_RegisterStart"> @Localizer["بداية التسجيل"]</label>
+        <h6>@ViewBag.opp.Opp_RegisterStart</h6>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Opp_RegisterEnd">@Localizer["نهاية التسجيل"]</label>
+        <h6>@ViewBag.opp.Opp_RegisterEnd</h6>
+    </div>
+    <br />
+    <div class="mb-3">
+        <a href="@ViewBag.opp.Opp_FormLink" class="card-link">@Localizer["رابط التسجيل"]</a>
+    </div>
+    <hr />
+    <a asp-action="Index" asp-controller="Opportunity" class="btn btn-secondary" style="width:150px">
+        @Localizer["الرجوع للأنشطة"]
+    </a>
+</div>
